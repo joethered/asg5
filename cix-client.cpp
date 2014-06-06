@@ -19,8 +19,12 @@ logstream log (cout);
 
 unordered_map<string,cix_command> command_map {
    {"exit", CIX_EXIT},
+   {"get",  CIX_GET },
    {"help", CIX_HELP},
    {"ls"  , CIX_LS  },
+   {"put",  CIX_PUT },
+   {"rm",   CIX_RM  },
+
 };
 
 void cix_help() {
@@ -60,10 +64,11 @@ void usage() {
    throw cix_exit();
 }
 
+bool signal_handler_throw_cix_exit {false};
 void signal_handler (int signal) {
    log << "signal_handler: caught " << strsignal (signal) << endl;
    switch (signal) {
-      case SIGINT: case SIGTERM: throw cix_exit();
+      case SIGINT: case SIGTERM: signal_handler_throw_cix_exit = true;
       default: break;
    }
 }
@@ -72,8 +77,8 @@ int main (int argc, char** argv) {
    log.execname (basename (argv[0]));
    log << "starting" << endl;
    vector<string> args (&argv[1], &argv[argc]);
-   signal_action (SIGINT, signal_handler);
-   signal_action (SIGTERM, signal_handler);
+   //signal_action (SIGINT, signal_handler);
+   //signal_action (SIGTERM, signal_handler);
    if (args.size() > 2) usage();
    string host = get_cix_server_host (args, 0);
    in_port_t port = get_cix_server_port (args, 1);

@@ -32,7 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="../cix-daemon.cpp" />
+		<Unit filename="../cix_protocol.cpp" />
+		<Unit filename="../cix_protocol.h" />
+		<Unit filename="../logstream.h" />
+		<Unit filename="../signal_action.cpp" />
+		<Unit filename="../signal_action.h" />
+		<Unit filename="../sockets.cpp" />
+		<Unit filename="../sockets.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

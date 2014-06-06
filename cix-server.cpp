@@ -49,8 +49,8 @@ int main (int argc, char**argv) {
    log.execname (basename (argv[0]));
    log << "starting" << endl;
    vector<string> args (&argv[1], &argv[argc]);
-   signal_action (SIGINT, signal_handler);
-   signal_action (SIGTERM, signal_handler);
+   //signal_action (SIGINT, signal_handler);
+   //signal_action (SIGTERM, signal_handler);
    int client_fd = stoi (args[0]);
    log << "starting client_fd " << client_fd << endl;
    try {

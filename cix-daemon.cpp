@@ -64,8 +64,8 @@ int main (int argc, char** argv) {
    log << "starting" << endl;
    vector<string> args (&argv[1], &argv[argc]);
    signal_action (SIGCHLD, signal_handler);
-   signal_action (SIGINT, signal_handler);
-   signal_action (SIGTERM, signal_handler);
+   //signal_action (SIGINT, signal_handler);
+   //signal_action (SIGTERM, signal_handler);
    in_port_t port = get_cix_server_port (args, 0);
    try {
       server_socket listener (port);
