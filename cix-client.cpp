@@ -58,6 +58,10 @@ void cix_ls (client_socket& server) {
    }
 }
 
+bool is_port(string port)
+
+//void cix_get()
+
 
 void usage() {
    cerr << "Usage: " << log.execname() << " [host] [port]" << endl;
@@ -80,8 +84,18 @@ int main (int argc, char** argv) {
    //signal_action (SIGINT, signal_handler);
    //signal_action (SIGTERM, signal_handler);
    if (args.size() > 2) usage();
-   string host = get_cix_server_host (args, 0);
-   in_port_t port = get_cix_server_port (args, 1);
+   if (args.size() == 2){
+      string host = get_cix_server_host (args, 0);
+      in_port_t port = get_cix_server_port (args, 1);
+   }else if (args.size() == 1){
+      if (){
+         string host = get_cix_server_host (args, 0);
+         in_port_t port = CIX_SERVER_PORT;
+      }else{
+         string host = CIX_SERVER_HOST;
+         in_port_t port = get_cix_server_port (args, 0);
+      }
+   }
    log << to_string (hostinfo()) << endl;
    try {
       log << "connecting to " << host << " port " << port << endl;
