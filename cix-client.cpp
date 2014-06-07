@@ -58,9 +58,34 @@ void cix_ls (client_socket& server) {
    }
 }
 
-bool is_port(string port)
+bool is_port(string& port)
+{
+    if(port.size()!= 15)
+    {
+        return false;
+    }
 
-//void cix_get()
+    for(size_t i=1; i<=port.size(); ++i)
+    {
+        //example: 128.114.108.152
+        if(i%4==0)
+        {
+            if(port[i-1]!='.')
+                return false;
+        }
+        else
+        {
+            if(port[i-1]<48 || port[i-1]>57)
+                return false;
+        }
+    }
+
+    return true;
+}
+
+void cix_get(){}
+void cix_rm(){}
+void cix_put() {}
 
 
 void usage() {
@@ -88,7 +113,7 @@ int main (int argc, char** argv) {
       string host = get_cix_server_host (args, 0);
       in_port_t port = get_cix_server_port (args, 1);
    }else if (args.size() == 1){
-      if (){
+      if ( is_port() ){
          string host = get_cix_server_host (args, 0);
          in_port_t port = CIX_SERVER_PORT;
       }else{

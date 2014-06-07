@@ -53,7 +53,7 @@ ostream& operator<< (ostream& out, const cix_header& header) {
         << int (header.cix_command) << ",\"" << header.cix_filename
         << "\"}";
    return out;
-}    
+}
 
 
 string get_cix_server_host (const vector<string>& args, size_t index) {
@@ -73,4 +73,4 @@ in_port_t get_cix_server_port (const vector<string>& args,
    }
    return stoi (port);
 }
-     
+
